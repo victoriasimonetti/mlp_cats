@@ -1,0 +1,81 @@
+#include <iostream>
+#include <string>
+#include "Pessoa.h"
+
+using namespace std;
+
+//Construtor
+Pessoa::Pessoa(){
+    this->setName("indefinido");
+    this->setdtnascimento(time(0));
+    this->setSexo(INDEFINIDO);
+    cout << "contrutor padrao chamado sem parametros" << endl;
+} 
+
+//Construtor de cópia, usa uma outra pessoa como base e faz um clone dela (por cópia profunda).
+//o mesmo que pessoa p; pessoa p2 = p; Copia de p.
+Pessoa::Pessoa(const Pessoa&){
+}
+
+// Construtor alternativo, cria uma pessoa padrao e tenta atribuir os valores passados.
+Pessoa::Pessoa(string pal, SEXO s, time_t tempo){
+    this->setName(pal);
+    this->setdtnascimento(tempo);
+    this->setSexo(s);
+    cout << "contrutor de atribuicao chamado com parametros" << endl;
+}
+
+
+// Sobrecarga do operador de atribuição, ele cria uma nova pessoa tendo como base a pessoa passada.
+Pessoa::Pessoa& operator = (const Pessoa&){
+    
+    cout << "contrutor de copia" << endl;
+}
+
+//Destrutor
+Pessoa::~Pessoa(){
+    cout << "Destrutor chamado" << endl;
+} 
+
+
+
+
+
+string Pessoa::getName(){
+    return this->name;
+}
+
+const time_t Pessoa:: getDtnascimento(){
+    return this->dtnascimento;
+}
+
+SEXO Pessoa::getSexo(){
+    return this->sexo;
+}
+
+void Pessoa::setName(string name){
+    this->name = name;
+}
+
+void Pessoa::setDtnascimento(time_t t){
+    this->dtnascimento = t;
+}
+
+void Pessoa::setSexo(SEXO s){
+    this->sexo = s;
+}
+
+void Pessoa::printAtributos(){
+    string s;
+    if(this->sexo == 0){
+        s = "INDEFINIDO";
+    }else if(this->sexo == 1){
+        s = "MASCULINO";
+    }else{
+        s = "FEMININO";
+    }
+    cout << "Nome: " << this->nome << endl << "Nascimento: " << this->dtnascimento << endl << "Sexo: " <<  s << endl;
+
+}
+
+
