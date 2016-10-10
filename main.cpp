@@ -1,21 +1,42 @@
+// Exemplo de uso de containers (coleções abstratas) em C++
+// Containers sao criados usando polimorfismo paramétrico
+// compilar com -std=c++11
 #include <iostream>
-#include <string>
-#include "Pessoa.h"
+#include <vector> // em C++11 ha o tipo array - experimente e descubra a difereça!
 
-using namespace std;
+#define SIZE 10 
 
-int main(){
+int main(){  
+   using namespace std;
 
-    Pessoa p1("Ana", Pessoa::FEMININO, time(0));
-    p1.printAtributos();
+   vector<int> vetor; // cria um vetor para armazenar números inteiros 
+   int i=0;
 
-    //Cria uma pessoa no heap e a manipula por p2, que é uma veriável do tipo ponteiro alocada na pilha.
-    Pessoa* p2 = new Pessoa();
-    p2->printAtributos();
+   // verifica tamanho atual (original)
+   cout << "Tamanho do vetor = " << vetor.size() << endl;
+ 
+   // coloca alguns numeros no vetor
+   cout << "Inserindo alguns elementos..." << endl; 
+   for(i = 0; i < SIZE; i++){
+      vetor.push_back(i); // adiciona no final do vetor
+   }
+ 
+   // verifica tamanho atual
+   cout << "Tamanho do vetor = " << vetor.size() << endl;
 
-    //cria referencia para p1
-    Pessoa& p3 = p1;
-    p3.printAtributos();
+   // mostrando elementos adicionados
+   for(i = 0; i < SIZE; i++){
+      cout << "vetor[" << i << "] = " << vetor[i] << endl;
+   }
 
-    return 0;
+   // usando iterador para acessar os elementos do vetor 
+   vector<int>::iterator elemento = vetor.begin(); 
+   i=0;
+   while( elemento != vetor.end()) {
+      cout << " elemento " << i++ << " = " << *elemento << endl;
+      elemento++; 
+   }
+  
+   return 0;
 }
+

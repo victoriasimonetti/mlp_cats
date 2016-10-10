@@ -18,7 +18,7 @@ Pessoa::Pessoa(const Pessoa&){
 }
 
 // Construtor alternativo, cria uma pessoa padrao e tenta atribuir os valores passados.
-Pessoa::Pessoa(string pal, SEXO s, time_t tempo){
+Pessoa::Pessoa(string pal, Sexo s, time_t tempo){
     this->setName(pal);
     this->setdtnascimento(tempo);
     this->setSexo(s);
@@ -27,7 +27,7 @@ Pessoa::Pessoa(string pal, SEXO s, time_t tempo){
 
 
 // Sobrecarga do operador de atribuição, ele cria uma nova pessoa tendo como base a pessoa passada.
-Pessoa::Pessoa& operator = (const pessoa&){
+Pessoa::Pessoa& operator = (const Pessoa&){
     
     cout << "contrutor de copia" << endl;
 }
